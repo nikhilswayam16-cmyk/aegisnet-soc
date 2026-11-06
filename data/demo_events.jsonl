@@ -1,0 +1,20 @@
+# AegisNet synthetic lab data only. All IP addresses are documentation ranges (RFC 5737).
+{"minutes_ago":5,"source":"linux-auth","event_type":"auth","src_ip":"203.0.113.45","asset":"edge-gateway-01","username":"root","action":"login","outcome":"failure"}
+{"minutes_ago":4,"source":"linux-auth","event_type":"auth","src_ip":"203.0.113.45","asset":"edge-gateway-01","username":"admin","action":"login","outcome":"failure"}
+{"minutes_ago":3,"source":"linux-auth","event_type":"auth","src_ip":"203.0.113.45","asset":"edge-gateway-01","username":"administrator","action":"login","outcome":"failure"}
+{"minutes_ago":2,"source":"linux-auth","event_type":"auth","src_ip":"203.0.113.45","asset":"edge-gateway-01","username":"root","action":"login","outcome":"failure"}
+{"minutes_ago":1,"source":"linux-auth","event_type":"auth","src_ip":"203.0.113.45","asset":"edge-gateway-01","username":"service","action":"login","outcome":"failure"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":22,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":23,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":80,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":443,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":3306,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":5432,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":8080,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":8443,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":1,"source":"netflow-probe","event_type":"network","src_ip":"192.0.2.77","dst_ip":"192.0.2.10","dst_port":9200,"asset":"lab-sensor-02","action":"connection_attempt","outcome":"denied"}
+{"minutes_ago":0,"source":"firewall","event_type":"network","src_ip":"10.10.4.23","dst_ip":"198.51.100.66","dst_port":443,"asset":"app-server-07","username":"svc-app","action":"outbound_connection","outcome":"allowed"}
+{"minutes_ago":0,"source":"dns-resolver","event_type":"dns","src_ip":"10.10.4.25","asset":"workstation-12","domain":"updates-malware.invalid","action":"dns_query","outcome":"success"}
+{"minutes_ago":0,"source":"netflow-probe","event_type":"network","src_ip":"10.10.5.19","dst_ip":"203.0.113.88","dst_port":443,"asset":"fileserver-01","username":"backup-agent","action":"outbound_transfer","outcome":"allowed","bytes_out":18874368}
+{"minutes_ago":0,"source":"linux-audit","event_type":"endpoint","src_ip":"10.10.5.20","asset":"admin-workstation-03","username":"analyst","action":"privilege_escalation","outcome":"success","process_name":"sudo"}
+{"minutes_ago":0,"source":"dns-resolver","event_type":"dns","src_ip":"10.10.7.9","asset":"workstation-19","domain":"a83jf9q2m4v7x1p6z0n5c8b3r9t2q4w7.example","action":"dns_query","outcome":"success"}

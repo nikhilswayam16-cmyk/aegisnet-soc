@@ -1,0 +1,14 @@
+services:
+  aegisnet:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      AEGIS_DATABASE_URL: sqlite:////app/state/aegisnet.db
+      AEGIS_LOG_LEVEL: INFO
+    volumes:
+      - aegisnet-state:/app/state
+    restart: unless-stopped
+
+volumes:
+  aegisnet-state:

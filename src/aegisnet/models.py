@@ -59,7 +59,7 @@ class Alert(Base):
     last_seen: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
-    audit_entries: Mapped[list["AuditEntry"]] = relationship(
+    audit_entries: Mapped[list[AuditEntry]] = relationship(
         back_populates="alert", cascade="all, delete-orphan", order_by="AuditEntry.created_at"
     )
 

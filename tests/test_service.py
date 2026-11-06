@@ -1,18 +1,18 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from pydantic import ValidationError
 
+from aegisnet.models import Event
 from aegisnet.schemas import EventIn
 from aegisnet.service import ingest_events
-from aegisnet.models import Event
 
 
 def test_ingestion_is_idempotent_for_event_id(db_session):
     item = EventIn(
         event_id="stable-event-001",
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
         source="test",
         event_type="auth",
         src_ip="203.0.113.2",

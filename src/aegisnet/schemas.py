@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import ipaddress
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -14,7 +14,7 @@ class EventIn(BaseModel):
     model_config = ConfigDict(extra="ignore", str_strip_whitespace=True)
 
     event_id: str | None = Field(default=None, max_length=128)
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(UTC))
     source: str = Field(default="manual", min_length=1, max_length=80)
     event_type: str = Field(min_length=2, max_length=40)
     src_ip: str | None = Field(default=None, max_length=64)

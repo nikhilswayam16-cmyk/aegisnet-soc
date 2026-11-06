@@ -4,13 +4,12 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import timezone
 
 from sqlalchemy.orm import Session
 
 from .detection import DetectionEngine, as_utc_naive, timestamp_text, utcnow_naive
-from .models import Alert, AuditEntry, Event, IOC
-from .schemas import EventIn, IOCIn
+from .models import IOC, Alert, AuditEntry, Event
+from .schemas import EventIn
 
 
 def canonical_event_uid(payload: dict) -> str:

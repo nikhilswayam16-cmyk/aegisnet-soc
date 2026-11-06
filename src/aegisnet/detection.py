@@ -10,12 +10,11 @@ from __future__ import annotations
 import json
 import math
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from sqlalchemy.orm import Session
 
-from .models import Alert, AuditEntry, Event, IOC
-
+from .models import IOC, Alert, AuditEntry, Event
 
 FAILED_OUTCOMES = {"failure", "failed", "denied", "blocked"}
 SUCCESS_OUTCOMES = {"success", "succeeded", "allowed", "ok"}
@@ -23,21 +22,21 @@ SUCCESS_OUTCOMES = {"success", "succeeded", "allowed", "ok"}
 
 def utcnow_naive() -> datetime:
     """Return UTC as a naive value for consistent SQLite storage."""
-    return datetime.now(timezone.utc).replace(tzinfo=None)
+    return datetime.now(UTC).replace(tzinfo=None)
 
 
 def as_utc_naive(value: datetime) -> datetime:
     if value.tzinfo is None:
         return value
-    return value.astimezone(timezone.utc).replace(tzinfo=None)
+    return value.astimezone(UTC).replace(tzinfo=None)
 
 
 def timestamp_text(value: datetime | None) -> str | None:
     if value is None:
         return None
     if value.tzinfo is None:
-        value = value.replace(tzinfo=timezone.utc)
-    return value.astimezone(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+        value = value.replace(tzinfo=UTC)
+    return value.astimezone(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
 def shannon_entropy(value: str) -> float:

@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import timedelta
 
 from aegisnet.detection import DetectionEngine, utcnow_naive
-from aegisnet.models import Alert, Event, IOC
+from aegisnet.models import IOC, Alert, Event
 
 
 def make_event(db, *, uid, event_type, minutes_ago=0, **kwargs):

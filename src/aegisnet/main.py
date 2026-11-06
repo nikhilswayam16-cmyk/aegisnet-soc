@@ -7,7 +7,7 @@ import logging
 import secrets
 from collections import Counter
 from contextlib import asynccontextmanager
-from datetime import timedelta, timezone
+from datetime import UTC, timedelta
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
@@ -17,9 +17,9 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from .config import settings
-from .database import Base, engine, get_db, SessionLocal
-from .detection import as_utc_naive, timestamp_text, utcnow_naive
-from .models import Alert, AuditEntry, Event, IOC
+from .database import Base, SessionLocal, engine, get_db
+from .detection import as_utc_naive, utcnow_naive
+from .models import IOC, Alert, AuditEntry, Event
 from .schemas import AlertUpdate, EventBatch, EventIn, IOCIn
 from .service import (
     ingest_events,
@@ -29,7 +29,6 @@ from .service import (
     serialize_event,
     serialize_ioc,
 )
-
 
 logging.basicConfig(level=getattr(logging, settings.log_level, logging.INFO))
 logger = logging.getLogger("aegisnet")
@@ -259,7 +258,7 @@ def replay_demo(db: Session = Depends(get_db)):
             continue
         payload = json.loads(line)
         minutes_ago = int(payload.pop("minutes_ago", 0))
-        payload["timestamp"] = (now - timedelta(minutes=minutes_ago)).replace(tzinfo=timezone.utc).isoformat()
+        payload["timestamp"] = (now - timedelta(minutes=minutes_ago)).replace(tzinfo=UTC).isoformat()
         items.append(EventIn.model_validate(payload))
     return ingest_events(db, items)
 
